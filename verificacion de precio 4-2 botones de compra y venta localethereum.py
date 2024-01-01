@@ -1,10 +1,9 @@
 from bs4 import BeautifulSoup
-from urllib.request import urlopen
 import tkinter as tk
-import requests
 import webbrowser
 import datetime
 from selenium import webdriver
+from security import safe_requests
 
 class Localbitcoin:
    
@@ -12,7 +11,7 @@ class Localbitcoin:
       self.pagina=pagina
      
    def extraccion(pagina,fila,columna):
-      html = requests.get(pagina)
+      html = safe_requests.get(pagina)
       res = BeautifulSoup(html.text, "lxml")
       precios= res.find_all("td","column-price")[:3]
       precios2=[]
