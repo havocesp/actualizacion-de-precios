@@ -12,7 +12,7 @@ class Localbitcoin:
       self.pagina=pagina
      
    def extraccion(pagina,fila,columna):
-      html = requests.get(pagina)
+      html = requests.get(pagina, timeout=60)
       res = BeautifulSoup(html.text, "lxml")
       precios= res.find_all("td","column-price")[:3]
       precios2=[]
